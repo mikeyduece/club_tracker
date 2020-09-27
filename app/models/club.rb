@@ -15,7 +15,7 @@
 #
 class Club < ApplicationRecord
   has_many :user_clubs, dependent: :destroy, inverse_of: :club
-  has_many :distances, through: :user_clubs
+  has_many :distances, through: :user_clubs, source: :distance
   
   enum club_type: %i[wood hybrid driving_iron iron wedge sand_wedge]
   

@@ -16,7 +16,7 @@
 class User < ApplicationRecord
   has_many :user_clubs, dependent: :destroy, inverse_of: :user
   has_many :clubs, through: :user_clubs
-  has_many :distances, through: :user_clubs
+  has_many :distances, through: :user_clubs, source: :distance
   
   validates :email, :first_name, :last_name, presence: true
   validates :email, uniqueness: true

@@ -20,9 +20,13 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class UserClub < ApplicationRecord
-  has_one :distance, inverse_of: :user_club, dependent: :destroy
+  has_one :distance, -> { reorder(created_at: :desc) }
   
   belongs_to :user, inverse_of: :user_clubs
   belongs_to :club, inverse_of: :user_clubs
+  
+  has_many :distances, dependent: :destroy
+  
+  accepts_nested_attributes_for :distances, reject_if: :all_blank, allow_destroy: true
   
 end

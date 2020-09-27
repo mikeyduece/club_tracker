@@ -20,8 +20,12 @@
 #  fk_rails_...  (user_club_id => user_clubs.id)
 #
 class Distance < ApplicationRecord
-  belongs_to :user_club, inverse_of: :distance
+  belongs_to :user_club
   
-  validates :number, :unit, :user_club_id, presence: true
-
+  validates :number, :unit, presence: true
+  
+  enum unit: %i[yards meters feet]
+  
+  delegate :club, to: :user_club
+  
 end
