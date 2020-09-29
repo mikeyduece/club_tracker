@@ -1,5 +1,5 @@
 class BaseSerializer
   include FastJsonapi::ObjectSerializer
-  set_key_transform :lower_camel
+  set_key_transform :camel_lower
 
 end

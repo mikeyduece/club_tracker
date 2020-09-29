@@ -20,7 +20,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class UserClub < ApplicationRecord
-  has_one :distance, -> { reorder(created_at: :desc) }
+  has_one :distance, -> { reorder(created_at: :desc) }, class_name: 'Distance'
   
   belongs_to :user, inverse_of: :user_clubs
   belongs_to :club, inverse_of: :user_clubs

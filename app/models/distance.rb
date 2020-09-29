@@ -4,7 +4,7 @@
 #
 #  id           :uuid             not null, primary key
 #  number       :integer          not null
-#  unit         :integer          default(0), not null
+#  unit         :integer          default("yards"), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_club_id :uuid             not null

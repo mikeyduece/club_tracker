@@ -3,7 +3,7 @@
 # Table name: clubs
 #
 #  id         :uuid             not null, primary key
-#  club_type  :integer          default(0), not null
+#  club_type  :integer          default("wood"), not null
 #  number     :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -15,7 +15,7 @@
 #
 class Club < ApplicationRecord
   has_many :user_clubs, dependent: :destroy, inverse_of: :club
-  has_many :distances, through: :user_clubs, source: :distance
+  has_many :distances, through: :user_clubs, source: :distances
   
   enum club_type: %i[wood hybrid driving_iron iron wedge sand_wedge]
   

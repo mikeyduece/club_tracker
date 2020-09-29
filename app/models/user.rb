@@ -16,9 +16,17 @@
 class User < ApplicationRecord
   has_many :user_clubs, dependent: :destroy, inverse_of: :user
   has_many :clubs, through: :user_clubs
-  has_many :distances, through: :user_clubs, source: :distance
+  has_many :distances, through: :user_clubs, source: :distances
   
   validates :email, :first_name, :last_name, presence: true
   validates :email, uniqueness: true
+
+  before_commit :add_clubs, on: :create
+  
+  private
+  
+  def add_clubs
+    self.club_ids = Club.pluck(:id)
+  end
   
 end
